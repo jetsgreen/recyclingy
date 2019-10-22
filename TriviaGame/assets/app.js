@@ -33,7 +33,7 @@ $(document).ready(function () {
     $("#show-number").html("<h2>" + number + "</h2>");
     if (number === 0) {
       stop();
-      $();
+      $("#display").html("Time's up!!!")
     }
   }
   function stop() {
@@ -59,13 +59,13 @@ $(document).ready(function () {
     var q8 = document.forms["quiz"]["q8"].value;
     var userInput = $("form input[type ='radio']:checked").val();
     
-    
+
 
 
 
     for (var i = 0; i < questions.length; i++) {
       if (userInput === ansArr[i]) {
-        correctAns++;
+        console.log(correct);
 
 
       } else {
