@@ -3,12 +3,32 @@ $(document).ready(function () {
 
   $("#form").hide();
   $("#show-number").hide();
+  $(".results").hide();
 
   $("#start-button").click(function () {
     $("#form").show();
     $("#start-button").hide();
-    $("#timer").show();
     $("#show-number").show();
+
+    var number = 5;
+    var intervalId;
+    $("#stop").on("click", stop);
+    $("#resume").on("click", run);
+    function run() {
+      intervalId = setInterval(decrement, 1000);
+    }
+    function decrement() {
+      number--;
+      $("#show-number").html("<h2>" + number + "</h2>");
+      if (number === 0) {
+        stop();
+        $("#display").html("Time's up!!!");
+        $(".results").show();
+        $("#form").hide();
+        
+  
+      }
+    }
 
 
   });
@@ -21,21 +41,7 @@ $(document).ready(function () {
   var wrongAns = 0;
 
 
-  var number = 60;
-  var intervalId;
-  $("#stop").on("click", stop);
-  $("#resume").on("click", run);
-  function run() {
-    intervalId = setInterval(decrement, 1000);
-  }
-  function decrement() {
-    number--;
-    $("#show-number").html("<h2>" + number + "</h2>");
-    if (number === 0) {
-      stop();
-      $("#display").html("Time's up!!!")
-    }
-  }
+
   function stop() {
     clearInterval(intervalId);
   }
