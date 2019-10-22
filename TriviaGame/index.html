@@ -24,14 +24,13 @@
 
     </div>
     <div>
-        <p id="timer"></p>
+        <span id="timer"></span>
     </div>
-    <div id="results">
-        <h2>You Scored: Not yet attempted</h2>
-    </div>
+    <div>
+       <h2 id="results"></h2>
 
 
-    <form name="quiz" onsubmit="return onSubmit()">
+    <form name="quiz" id=form>
 
         <div class="question">
             <p>1.Who hit the first homerun at the new Yankee Stadium?
@@ -114,7 +113,7 @@
             </p>
         </div>
         
-        <button id="submit">Submit</button>
+        <input type="submit" value="Submit">
         <!-- <div class="results">      
             <h3>All DONE:</h3>
             <h4 id="correct-answers">Correct Answers:</h4>
