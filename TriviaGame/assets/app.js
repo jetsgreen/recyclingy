@@ -2,16 +2,18 @@
 $(document).ready(function () {
 
   $("#form").hide();
-  $("#timer").hide();
+  $("#show-number").hide();
 
   $("#start-button").click(function () {
     $("#form").show();
     $("#start-button").hide();
     $("#timer").show();
-
+    $("#show-number").show();
 
 
   });
+
+
 
 
   var correctAns = 0;
@@ -19,18 +21,30 @@ $(document).ready(function () {
   var wrongAns = 0;
 
 
-  var counter = 45;
-  var interval = setInterval(function () {
-   $("#timer").html(counter);
-    counter--;
-
-    if (counter < 0) {
-
-      clearInterval(interval);
+  var number = 60;
+  var intervalId;
+  $("#stop").on("click", stop);
+  $("#resume").on("click", run);
+  function run() {
+    intervalId = setInterval(decrement, 1000);
+  }
+  function decrement() {
+    number--;
+    $("#show-number").html("<h2>" + number + "</h2>");
+    if (number === 0) {
+      stop();
+      $();
     }
-  }, 1000);
+  }
+  function stop() {
+    clearInterval(intervalId);
+  }
+  run();
+
 
   $("#submit").click(function () {
+
+    event.preventDefault()
 
 
     var ansArr = ["b", "b", "d", "d", "c", "d"];
@@ -43,10 +57,13 @@ $(document).ready(function () {
     var q6 = document.forms["quiz"]["q6"].value;
     var q7 = document.forms["quiz"]["q7"].value;
     var q8 = document.forms["quiz"]["q8"].value;
-    var userInput = $(this).attr("value");
+    var userInput = $("form input[type ='radio']:checked").val();
+    
+    
 
 
-    for (var i = 1; i < questions.length; i++) {
+
+    for (var i = 0; i < questions.length; i++) {
       if (userInput === ansArr[i]) {
         correctAns++;
 
@@ -58,11 +75,23 @@ $(document).ready(function () {
 
     var results = $("#results");
     results.html("You Scored " + score + " points out of " + numOfQuestions + "</h2>")
-   
+
 
   });
 
 });
+//  function correctAnswers() {
+//       if(!clockRunnig) {
+//         var userInput = $(this).attr(value);
+//         if(userInput === "right") {
+//           correct++;
+//         }
+
+//       }else{
+//         incorrect++;
+//       }
+//     }
+
 
 
 
@@ -90,17 +119,7 @@ $(document).ready(function () {
     // });
 
 
-    // function correctAnswers() {
-    //   if(!clockRunnig) {
-    //     var userInput = $(this).attr(value);
-    //     if(userInput === "right") {
-    //       correct++;
-    //     }
 
-    //   }else{
-    //     incorrect++;
-    //   }
-    // }
 
 
 
