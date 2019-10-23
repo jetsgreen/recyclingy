@@ -3,7 +3,7 @@ $(document).ready(function () {
 
   $("#form").hide();
   $("#show-number").hide();
-  $(".results").hide();
+  $("#results").hide();
 
   $("#start-button").click(function () {
     $("#form").show();
@@ -11,12 +11,10 @@ $(document).ready(function () {
     $("#show-number").show();
 
 
-
-
   });
 
 
-  var number = 60;
+  var number = 5;
   var intervalId;
   $("#stop").on("click", stop);
   $("#resume").on("click", run);
@@ -29,9 +27,8 @@ $(document).ready(function () {
     if (number === 0) {
       stop();
       $("#display").html("Time's up!!!");
-      $(".results").show();
+      $("#results").show();
       $("#form").hide();
-
 
     }
   }
@@ -51,6 +48,10 @@ $(document).ready(function () {
   $("#submit").click(function () {
 
     event.preventDefault()
+    $("#form").hide();
+    $("#display").hide();
+    $("#show-number").hide();
+    $("#results").show();
 
 
     var ansArr = ["b", "b", "d", "d", "c", "d"];
