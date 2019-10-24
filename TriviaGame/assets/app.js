@@ -1,10 +1,10 @@
 
 $(document).ready(function () {
-
+// created functions to make the form, the timer and the results to hid when the page loads
   $("#form").hide();
   $("#show-number").hide();
   $("#results").hide();
-
+// on click of the start button the form will show, the start button will hide and the timer will show
   $("#start-button").click(function () {
     $("#form").show();
     $("#start-button").hide();
@@ -12,12 +12,13 @@ $(document).ready(function () {
 
 
   });
+  var correctAns = 0;
+  var unaswered = 0;
+  var wrongAns = 0;
 
-
-  var number = 60;
+  var number = 20;
   var intervalId;
-  $("#stop").on("click", stop);
-  $("#resume").on("click", run);
+  
   function run() {
     intervalId = setInterval(decrement, 1000);
   }
@@ -29,14 +30,11 @@ $(document).ready(function () {
       $("#display").html("Time's up!!!");
       $("#results").show();
       $("#form").hide();
+      unaswered++;
+      $("#unanswered").html(" Unanswered: " + unaswered);
       
     }
   }
-
-  var correctAns = 0;
-  var unaswered = 0;
-  var wrongAns = 0;
-
 
 
   function stop() {
@@ -81,7 +79,7 @@ $(document).ready(function () {
       },
       {
         q8: "d"
-      }
+      },
     ]
     var userInput = $("form input[type ='radio']:checked").val();
     for (var i = 0; i < questions.length; i++)
@@ -91,6 +89,7 @@ $(document).ready(function () {
       } else{
         wrongAns++;
         $("#incorrect-answers").html("Incorrect Answers: " + wrongAns);
+        
       } 
 
   });
