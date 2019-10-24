@@ -16,7 +16,7 @@ $(document).ready(function () {
   var unaswered = 0;
   var wrongAns = 0;
 
-  var number = 20;
+  var number = 60;
   var intervalId;
   
   function run() {
