@@ -13,3 +13,7 @@ Technologies Used
 * CSS3 
 * JavaScript 
 * JQuery
+
+### Link to the application
+
+https://jetsgreen.github.io/recyclingy/
