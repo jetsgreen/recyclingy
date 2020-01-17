@@ -16,4 +16,4 @@ Technologies Used
 
 ### Link to the application
 
-https://jetsgreen.github.io/recyclingy/
+https://jetsgreen.github.io/recyclingy/.
